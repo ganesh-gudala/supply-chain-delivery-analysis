@@ -1,0 +1,53 @@
+{
+  "name": "Delivery Analysis Dark",
+  "dataColors": ["#22D3EE", "#F59E0B", "#F43F5E", "#A78BFA", "#34D399", "#60A5FA", "#F472B6", "#94A3B8"],
+  "background": "#111A2E",
+  "foreground": "#F8FAFC",
+  "backgroundLight": "#1F2A44",
+  "foregroundNeutralSecondary": "#94A3B8",
+  "foregroundNeutralTertiary": "#64748B",
+  "tableAccent": "#22D3EE",
+  "good": "#34D399",
+  "neutral": "#F59E0B",
+  "bad": "#F43F5E",
+  "textClasses": {
+    "callout": { "fontFace": "Segoe UI Semibold", "fontSize": 34, "color": "#22D3EE" },
+    "title": { "fontFace": "Segoe UI Semibold", "fontSize": 15, "color": "#F8FAFC" },
+    "header": { "fontFace": "Segoe UI Semibold", "fontSize": 13, "color": "#F8FAFC" },
+    "label": { "fontFace": "Segoe UI", "fontSize": 12, "color": "#CBD5E1" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "show": true, "color": { "solid": { "color": "#111A2E" } }, "transparency": 0 }],
+        "border": [{ "show": true, "color": { "solid": { "color": "#24324F" } }, "radius": 14 }],
+        "dropShadow": [{ "show": false }],
+        "title": [{ "show": true, "fontSize": 15, "bold": true, "fontColor": { "solid": { "color": "#F8FAFC" } } }],
+        "categoryAxis": [{
+          "labelColor": { "solid": { "color": "#CBD5E1" } }, "fontSize": 12,
+          "titleColor": { "solid": { "color": "#94A3B8" } },
+          "gridlineColor": { "solid": { "color": "#24324F" } }
+        }],
+        "valueAxis": [{
+          "labelColor": { "solid": { "color": "#CBD5E1" } }, "fontSize": 12,
+          "titleColor": { "solid": { "color": "#94A3B8" } },
+          "gridlineColor": { "solid": { "color": "#24324F" } }
+        }],
+        "legend": [{ "labelColor": { "solid": { "color": "#E2E8F0" } }, "fontSize": 12 }],
+        "labels": [{ "color": { "solid": { "color": "#F8FAFC" } }, "fontSize": 12 }]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#0B1220" } }, "transparency": 0 }],
+        "outspace": [{ "color": { "solid": { "color": "#0B1220" } }, "transparency": 0 }]
+      }
+    },
+    "slicer": {
+      "*": {
+        "items": [{ "fontColor": { "solid": { "color": "#E2E8F0" } }, "textSize": 12 }],
+        "header": [{ "fontColor": { "solid": { "color": "#F8FAFC" } }, "textSize": 13 }]
+      }
+    }
+  }
+}

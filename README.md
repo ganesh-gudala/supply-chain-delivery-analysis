@@ -1,7 +1,9 @@
 # Why Are Deliveries Late? — Supply Chain Delivery Performance Analysis
 
-**Tools:** Python (pandas, matplotlib) · SQL (SQLite) · Power BI *(in progress)*
+**Tools:** Python (pandas, matplotlib) · SQL (SQLite) · Power BI (DAX)
 **Data:** [DataCo Smart Supply Chain dataset](https://www.kaggle.com/datasets/shashwatwork/dataco-smart-supply-chain-for-big-data-analysis) — 180,519 order items, 65,752 orders, Jan 2015 – Jan 2018
+
+![Power BI dashboard](images/dashboard.png)
 
 ## Business question
 DataCo, a global retailer, delivers a majority of its orders late. **Where are the delays, what is driving them, and what should the business change?**
@@ -43,7 +45,7 @@ First Class promises 1 day but **always** takes 2. Second Class promises 2 days 
 |---|---|---|
 | 1 | Data quality check, cleaning and feature engineering in Python | [`01_data_cleaning.ipynb`](01_data_cleaning.ipynb) |
 | 2 | Eight business questions answered in SQL | [`02_sql_analysis.ipynb`](02_sql_analysis.ipynb) |
-| 3 | Interactive Power BI dashboard | *in progress* |
+| 3 | Interactive Power BI dashboard (KPI cards, market filter, trend and promise-vs-actual views) | [`delivery_dashboard.pbix`](delivery_dashboard.pbix) |
 
 **Data cleaning highlights**
 - Identified that one row = one order **item**, not one order, and aggregated to order level before calculating late rates (the naive item-level figure, 54.8%, understated the problem).
@@ -54,13 +56,16 @@ First Class promises 1 day but **always** takes 2. Second Class promises 2 days 
 
 **SQL techniques used:** `COUNT(DISTINCT)`, conditional aggregation with `CASE WHEN`, `GROUP BY` / `HAVING`, `ROUND`, `ORDER BY` / `LIMIT`.
 
+**Power BI:** built on an order-level table (`powerbi_orders.csv`, exported by notebook 1) with DAX measures — `Shipped Orders`, `Late Orders`, `Late %` (`DIVIDE`), `Avg Promised Days`, `Avg Actual Days` (`CALCULATE` with filters to exclude cancelled orders). The late-rate trend uses a zero-based axis so small month-to-month noise isn't exaggerated. Custom dark theme in [`reference/powerbi_theme.json`](reference/powerbi_theme.json).
+
 ## How to run
 1. Download the dataset from Kaggle and put `DataCoSupplyChainDataset.csv` in a `data/` folder.
 2. `pip install pandas matplotlib jupyter jupysql`
-3. Run `01_data_cleaning.ipynb` (creates `data/supply_chain.db`), then `02_sql_analysis.ipynb`.
+3. Run `01_data_cleaning.ipynb` (creates `data/supply_chain.db` and `data/powerbi_orders.csv`), then `02_sql_analysis.ipynb`.
+4. Open `delivery_dashboard.pbix` in Power BI Desktop (if prompted, point the data source to `data/powerbi_orders.csv`).
 
 ## Note on tools
-The Python cleaning notebook was built with AI assistance (Claude). The business questions, SQL analysis and findings are my own work.
+The Python cleaning notebook and the Power BI theme were built with AI assistance (Claude). The business questions, SQL analysis, dashboard and findings are my own work.
 
 ---
 **Ganesh Gudala** · MSc Supply Chain & Logistics, University of Roehampton · [LinkedIn](https://www.linkedin.com/in/ganesh-gudala-39817a244)
