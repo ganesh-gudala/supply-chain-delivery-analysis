@@ -4,6 +4,9 @@
 # Raw data is ~95 MB — too big for GitHub. Link to the Kaggle source in the README instead.
 data/
 
+# Private interview notes
+INTERVIEW_GUIDE.md
+
 # Annotated screenshots used while building the dashboard
 powerbi_help/
 
