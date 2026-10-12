@@ -1,0 +1,8 @@
+# Python environment (anyone can recreate it)
+.venv/
+
+# Raw data is ~95 MB — too big for GitHub. Link to the Kaggle source in the README instead.
+data/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
