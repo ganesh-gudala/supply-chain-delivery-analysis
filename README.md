@@ -45,6 +45,7 @@ First Class promises 1 day but **always** takes 2. Second Class promises 2 days 
 |---|---|---|
 | 1 | Data quality check, cleaning and feature engineering in Python | [`01_data_cleaning.ipynb`](01_data_cleaning.ipynb) |
 | 2 | Eight business questions answered in SQL | [`02_sql_analysis.ipynb`](02_sql_analysis.ipynb) |
+| 2b | Advanced SQL: CTEs, `RANK() OVER (PARTITION BY)` and `LAG()` month-over-month analysis | [`03_advanced_sql.ipynb`](03_advanced_sql.ipynb) |
 | 3 | Interactive Power BI dashboard (KPI cards, market filter, trend and promise-vs-actual views) | [`delivery_dashboard.pbix`](delivery_dashboard.pbix) |
 
 **Data cleaning highlights**
@@ -54,7 +55,9 @@ First Class promises 1 day but **always** takes 2. Second Class promises 2 days 
 - Converted text dates, renamed columns to `snake_case`, translated 164 Spanish country names to English.
 - Flagged that data volume drops by more than half from Oct 2017 (likely incomplete).
 
-**SQL techniques used:** `COUNT(DISTINCT)`, conditional aggregation with `CASE WHEN`, `GROUP BY` / `HAVING`, `ROUND`, `ORDER BY` / `LIMIT`.
+**SQL techniques used:** `COUNT(DISTINCT)`, conditional aggregation with `CASE WHEN`, `GROUP BY` / `HAVING`, `ROUND`, `ORDER BY` / `LIMIT`, CTEs (`WITH`, including chained CTEs), window functions `RANK() OVER (PARTITION BY ...)` and `LAG() OVER (ORDER BY ...)`.
+
+**Advanced SQL findings:** 20 of 37 months sat above the average late rate, but all within a narrow 55–60% band; the worst country in each market is only 2–4 points above average; and month-over-month changes stay mostly within ±2 points. The problem is stable and structural, not seasonal or regional.
 
 **Power BI:** built on an order-level table (`powerbi_orders.csv`, exported by notebook 1) with DAX measures — `Shipped Orders`, `Late Orders`, `Late %` (`DIVIDE`), `Avg Promised Days`, `Avg Actual Days` (`CALCULATE` with filters to exclude cancelled orders). The late-rate trend uses a zero-based axis so small month-to-month noise isn't exaggerated. Custom dark theme in [`reference/powerbi_theme.json`](reference/powerbi_theme.json).
 
